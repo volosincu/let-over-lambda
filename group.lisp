@@ -4,21 +4,21 @@
   (let ((ll '())
 	(buff '()))
     (labels ((rec (l)
-	       (let ((head (car l)))
-	       (cond (head
-		      (if (eq (length buff) by)
-			  (progn
-			    (push buff ll)
-			    (setq buff '())
+	       (let ((head (car l))
+		     (tail (cdr l)))
+		 (cond (head
+			(if (eq (length buff) by)
+			    (progn
+			      (push buff ll)
+			      (setq buff '())
+			      (push head buff))
 			    (push head buff))
-			  (push head buff))
-		      (if (null (cdr l))
-			  (progn
+			(if (null tail)
 			    (push buff ll)
-			    (print ll))
-			  (rec (cdr l)))
-		      )))))
-      (rec lst))))
+			    (rec tail))
+			)))))
+      (rec lst))
+    ll))
 
 
 ;(defun ggroup (lst by)
