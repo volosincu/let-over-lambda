@@ -4,19 +4,20 @@
   (let ((ll '())
 	(buff '()))
     (labels ((rec (l)
-	       (cond ((car l)
+	       (let ((head (car l)))
+	       (cond (head
 		      (if (eq (length buff) by)
 			  (progn
 			    (push buff ll)
 			    (setq buff '())
-			    (push (car l) buff))
-			  (push (car l) buff))
+			    (push head buff))
+			  (push head buff))
 		      (if (null (cdr l))
 			  (progn
 			    (push buff ll)
 			    (print ll))
 			  (rec (cdr l)))
-		      ))))
+		      )))))
       (rec lst))))
 
 
