@@ -9,7 +9,7 @@
 		 (cond (head
 			(if (eq (length buff) by)
 			    (progn
-			      (push buff ll)
+			      (push (reverse buff) ll)
 			      (setq buff '())
 			      (push head buff))
 			    (push head buff))
@@ -18,7 +18,7 @@
 			    (rec tail))
 			)))))
       (rec lst))
-    ll))
+    (reverse ll)))
 
 
 ;(defun ggroup (lst by)
