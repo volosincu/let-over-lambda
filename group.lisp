@@ -1,6 +1,7 @@
 
 
 (defun group (lst by)
+  (if (<= by 0) (error "can't group by 0 or negative number"))
   (labels ((rec (xs)
 	     (if (not (null xs))
 		 (if (>= (length xs) by)
