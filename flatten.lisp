@@ -3,12 +3,15 @@
 
 
 (defun flatten (tree)
-  (if (not (null tree))
-      (if (atom (car tree))
-	    (progn (print (car tree)) (flatten (cdr tree)))
-	    (progn
-	      (flatten (car tree))
-	      (flatten (cdr tree))))))
-
-
-
+  (let ((flatlist '() )) 
+    (labels ((rec (subtree)
+	       (if (not (null subtree))
+		   (if (atom (car subtree))
+		       (progn (print (car subtree))
+			      (push (car subtree) flatlist )
+			      (rec (cdr subtree)))
+		       (progn
+			 (rec (car subtree))
+			 (rec (cdr subtree)))))))
+      (rec tree))
+    (reverse flatlist)))
