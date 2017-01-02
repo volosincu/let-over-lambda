@@ -8,5 +8,6 @@
 		   (if (atom xs)
 		       (cons xs acc)
 		       (rec (car xs)
-			    (rec (cdr xs) acc))))))
+			    (rec (cdr xs) acc)))
+		   acc)))
       (rec tree nil)))
